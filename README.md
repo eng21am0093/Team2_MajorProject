@@ -37,7 +37,7 @@ The system is designed as a collaborative multi-agent framework that mirrors a r
 2. **Multi-Agent Reasoning Layer**: Specialized agents contribute expert analysis in specific domains
 3. **Output Synthesis Layer**: Compiles the agents' findings into a final structured report
 
-   ![Architecture Workflow](architecture.png)
+   ![Architecture Workflow](architecture)
 
 ### Specialized Agents
 
