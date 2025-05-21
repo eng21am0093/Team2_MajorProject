@@ -133,8 +133,8 @@ Modern diagnostic workflows suffer from fragmented data across imaging, EHRs, an
 
 ## 👥 Contributors
 
-* **Ratan Ravichandran** (ENG21AM0093) — System design, orchestration, evaluation
-* **Sayli Pankaj Bande** (ENG21AM0112) — Data preprocessing, prompt engineering, documentation
+* **Ratan Ravichandran** (ENG21AM0093) 
+* **Sayli Pankaj Bande** (ENG21AM0112) 
 
 Project supervised by **Dr. Vinutha N** (Associate Professor, CSE – AI & ML).
 
