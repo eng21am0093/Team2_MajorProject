@@ -1,6 +1,6 @@
 # Agent Frameworks for VLM-Based Medical Diagnosis
 
-![Architecture Workflow](docs/images/architecture_workflow.png)
+
 
 **Multi-agent AI system** that leverages Vision-Language Models and Retrieval-Augmented Generation to deliver explainable, real-time clinical decision support.
 
@@ -37,6 +37,8 @@ The system is designed as a collaborative multi-agent framework that mirrors a r
 2. **Multi-Agent Reasoning Layer**: Specialized agents contribute expert analysis in specific domains
 3. **Output Synthesis Layer**: Compiles the agents' findings into a final structured report
 
+   ![Architecture Workflow](architecture.png)
+
 ### Specialized Agents
 
 - **Case Data Extractor**: Processes raw clinical materials and produces structured summaries
@@ -45,6 +47,8 @@ The system is designed as a collaborative multi-agent framework that mirrors a r
 - **Medical Researcher**: Retrieves and synthesizes relevant medical literature
 - **Ethics Advisor**: Reviews ethical implications of diagnostic and treatment options
 - **Diagnostic Specialist**: Performs comprehensive analysis and produces final diagnosis
+
+  ![Architecture Workflow](agents_flow.png)
 
 ### Knowledge Base and RAG
 
@@ -56,6 +60,10 @@ Using DeepEval metrics, the framework has achieved:
 - GEval score of 0.898
 - Perfect faithfulness at 1.000
 - High precision and recall in diagnostic outputs
+
+   ![Architecture Workflow](res1.png)
+  ![Architecture Workflow](res_2.png)
+
 
 The sequential chat pattern demonstrated superior performance to group chat approaches, with significantly higher precision (0.90 vs 0.70) and recall (1.00 vs 0.78).
 
