@@ -4,132 +4,84 @@
 
 **Multi-agent AI system** that leverages Vision-Language Models and Retrieval-Augmented Generation to deliver explainable, real-time clinical decision support.
 
----
+# AI Agent Framework for VLM-based Medical Diagnosis
 
-## 📖 Table of Contents
+## Overview
 
-- [Overview](#overview)  
-- [Key Features](#key-features)  
-- [Proposed Architecture](#proposed-architecture)  
-- [Getting Started](#getting-started)  
-  - [Prerequisites](#prerequisites)  
-  - [Installation](#installation)  
-- [Usage](#usage)  
-- [Repository Structure](#repository-structure)  
-- [Figures & Diagrams](#figures--diagrams)  
-- [Contributors](#contributors)  
-- [License](#license)  
+This project explores the integration of an AI agent framework with Vision-Language Models (VLMs) to enhance medical diagnostic processes. Our solution leverages VLMs to analyze diverse medical data types, such as images and text, in real-time. By employing a chain-of-thought reasoning model, the AI agents provide reliable and explainable diagnostic insights, generate comprehensive reports, and offer real-time support to clinicians.
 
----
+## Problem Statement
 
-## 🧐 Overview
+Current medical diagnostic systems face several challenges:
+- Fragmented data sources and integration issues
+- Limited adaptive learning capabilities
+- Absence of intelligent frameworks for task coordination
+- Need for real-time, explainable support
+- Scalability and consistency challenges across different contexts
 
-Modern diagnostic workflows suffer from fragmented data across imaging, EHRs, and lab reports. This project introduces a **chain-of-thought**, **multi-agent AI framework** that:
+## Solution
 
-1. Integrates **Vision-Language Models** (e.g., LLaMA 3.2 11B-Vision) to interpret scans.  
-2. Uses **CrewAI** (or Autogen/LangChain) to orchestrate specialized agents—Patient Historian, Lab Interpreter, Medical Researcher, Ethics Advisor, and Diagnosis Specialist.  
-3. Employs a **Vector DB + RAG pipeline** to ground outputs in patient history and up-to-date literature.  
-4. Generates comprehensive, **explainable diagnostic reports** with embedded clinical reasoning.
+Our AI agent framework addresses these challenges through:
 
----
+- **Multimodal Data Integration**: Seamlessly processes and harmonizes medical images, EHR entries, lab reports, and clinical narratives
+- **Adaptive Learning Mechanisms**: Continuously refines diagnostic models based on clinician feedback and emerging guidelines
+- **Specialized Agent Coordination**: Orchestrates dedicated modules for vision tasks, language understanding, and numerical lab-value interpretation
+- **Explainable Decision Support**: Utilizes chain-of-thought reasoning to provide transparent, interpretable insights
+- **Scalable Architecture**: Maintains consistent performance across various clinical scenarios
 
-## 🔑 Key Features
+## Architecture
 
-- **Multimodal Input**: Seamless ingestion of images, free-text notes, structured labs.  
-- **Retrieval-Augmented Generation**: Semantic search over patient data & medical literature.  
-- **Chain-of-Thought Agents**: Each agent focuses on a discrete subtask, then hands off to the next.  
-- **Explainability**: Transparent reasoning log—every decision step is traceable.  
-- **Adaptive Learning**: Plug-in SME feedback loops to fine-tune agent prompts and knowledge.  
-- **Ethical Oversight**: Built-in Ethics Advisor agent flags privacy, consent, and bias issues.  
+The system is designed as a collaborative multi-agent framework that mirrors a real-world medical team consulting on a diagnosis. Key components include:
 
----
+1. **Input Processing Layer**: Ingests multimodal patient data (text and images) and encodes it into a unified knowledge store
+2. **Multi-Agent Reasoning Layer**: Specialized agents contribute expert analysis in specific domains
+3. **Output Synthesis Layer**: Compiles the agents' findings into a final structured report
 
-## 🏗 Proposed Architecture
+### Specialized Agents
 
-1. **Input Layer**  
-   - Image → VLM → textual observations  
-   - Text → segmentation & embedding → Vector DB  
+- **Case Data Extractor**: Processes raw clinical materials and produces structured summaries
+- **Patient Historian**: Synthesizes patient background into a coherent narrative
+- **Lab Interpreter**: Evaluates diagnostic test data and provides clinical interpretations
+- **Medical Researcher**: Retrieves and synthesizes relevant medical literature
+- **Ethics Advisor**: Reviews ethical implications of diagnostic and treatment options
+- **Diagnostic Specialist**: Performs comprehensive analysis and produces final diagnosis
 
-2. **Agent Orchestration**  
-   - Sequential Chat pattern managed by CrewAI  
-   - Shared context + short/long-term memory  
+### Knowledge Base and RAG
 
-3. **RAG Pipeline**  
-   1. Chunk & embed documents  
-   2. Nearest-neighbor retrieval  
-   3. LLM synthesis with tool invocation (MDXSearchTool, SerperDevTool, etc.)  
+The framework utilizes a vector database that powers a Retrieval-Augmented Generation mechanism, serving as the unified knowledge store for both patient-specific data and external medical references.
 
-4. **Output**  
-   - Final Diagnosis Specialist → structured report  
+## Results
 
-![Proposed Model Diagram](docs/images/proposed_model.png)
+Using DeepEval metrics, the framework has achieved:
+- GEval score of 0.898
+- Perfect faithfulness at 1.000
+- High precision and recall in diagnostic outputs
 
----
+The sequential chat pattern demonstrated superior performance to group chat approaches, with significantly higher precision (0.90 vs 0.70) and recall (1.00 vs 0.78).
 
-## 🚀 Getting Started
+## Future Work
 
-### Prerequisites
+- Develop a comprehensive evaluation framework to benchmark VLMs and agent workflows
+- Refine agent workflows for specialized outputs in complex medical cases
+- Integrate multi-omic data for precision medicine applications
+- Enhance feedback-driven refinement mechanisms
 
-- Python 3.10+  
-- Access to a Vision-Language Model (e.g., LLaMA 3.2 with vision extension)  
-- API keys for OpenAI / Azure OpenAI (GPT-4o Mini)  
-- A vector database (FAISS, Pinecone, or similar)  
-- Docker & Docker Compose (optional, for local orchestration)  
+## Requirements
 
----
+### Hardware Requirements
+- CPU: Dual-core (or higher) Intel i5/i7 or AMD Ryzen 5/7, clock speed 2.5 GHz
+- Memory: Minimum 8GB (16GB recommended)
+- Storage: SSD with 50GB free space
 
-## ⚙️ Usage
+### Software Requirements
+- Operating System: Linux (Ubuntu 20.04+) or Windows 10/11 (64-bit)
+- Python 3.10+
+- Core Libraries: Autogen, crewai & crewai tools
+- Vector Database Client: FAISS, Pinecone, or equivalent
 
-1. **Configure your vector DB** in `config/vector_db.yaml`.
+## Conclusion
 
-2. **Prepare patient data** under `data/` (images, EHR text, lab reports).
-
-3. **Launch orchestration**:
-
-   ```bash
-   python main.py
-   ```
-
-4. **View outputs** in the `outputs/` directory:
-
-   * `diagnostic_report.md`
-   * `treatment_plan.md`
-   * `ethics_assessment.md`
-
----
-
-## 📁 Repository Structure
-
-```
-.
-├── README.md
-├── main.py
-├── diagnosis/
-│   ├── crew.py
-│   ├── config/
-│   │   ├── agents.yaml
-│   │   └── tasks.yaml
-│   └── data/
-│       ├── patient_history.txt
-│       ├── lab_history.txt
-│       └── imaging_data.txt
-├── docs/
-│   └── images/
-│       ├── architecture_workflow.png
-│       └── proposed_model.png
-├── requirements.txt
-└── outputs/
-```
-
----
-
-## 📊 Figures & Diagrams
-
-* **Figure 4.1**: High-level multi-agent workflow
-* **Proposed Model Diagram**: End-to-end data & agent flow
-* **Experimentation Results**: Precision/Recall & ROUGE comparisons
-
----
+This integrated approach enhances overall diagnostic performance, bridging the gap between general-purpose vision models and the specialized requirements of accurate radiographic diagnosis. The collaborative AI framework streamlines information exchange between healthcare professionals and AI systems, improving the speed and accuracy of diagnoses.
 
 ## 👥 Contributors
 
@@ -139,9 +91,5 @@ Modern diagnostic workflows suffer from fragmented data across imaging, EHRs, an
 Project supervised by **Dr. Vinutha N** (Associate Professor, CSE – AI & ML).
 
 ---
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 ```
