@@ -29,6 +29,19 @@ Our AI agent framework addresses these challenges through:
 - **Explainable Decision Support**: Utilizes chain-of-thought reasoning to provide transparent, interpretable insights
 - **Scalable Architecture**: Maintains consistent performance across various clinical scenarios
 
+## Requirements
+
+### Hardware Requirements
+- CPU: Dual-core (or higher) Intel i5/i7 or AMD Ryzen 5/7, clock speed 2.5 GHz
+- Memory: Minimum 8GB (16GB recommended)
+- Storage: SSD with 50GB free space
+
+### Software Requirements
+- Operating System: Linux (Ubuntu 20.04+) or Windows 10/11 (64-bit)
+- Python 3.10+
+- Core Libraries: Autogen, crewai & crewai tools
+- Vector Database Client: FAISS, Pinecone, or equivalent
+- 
 ## Architecture
 
 The system is designed as a collaborative multi-agent framework that mirrors a real-world medical team consulting on a diagnosis. Key components include:
@@ -74,18 +87,7 @@ The sequential chat pattern demonstrated superior performance to group chat appr
 - Integrate multi-omic data for precision medicine applications
 - Enhance feedback-driven refinement mechanisms
 
-## Requirements
 
-### Hardware Requirements
-- CPU: Dual-core (or higher) Intel i5/i7 or AMD Ryzen 5/7, clock speed 2.5 GHz
-- Memory: Minimum 8GB (16GB recommended)
-- Storage: SSD with 50GB free space
-
-### Software Requirements
-- Operating System: Linux (Ubuntu 20.04+) or Windows 10/11 (64-bit)
-- Python 3.10+
-- Core Libraries: Autogen, crewai & crewai tools
-- Vector Database Client: FAISS, Pinecone, or equivalent
 
 ## Conclusion
 
