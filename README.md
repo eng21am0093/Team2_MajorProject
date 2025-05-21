@@ -48,7 +48,7 @@ The system is designed as a collaborative multi-agent framework that mirrors a r
 - **Ethics Advisor**: Reviews ethical implications of diagnostic and treatment options
 - **Diagnostic Specialist**: Performs comprehensive analysis and produces final diagnosis
 
-  ![Architecture Workflow](agents_flow.png)
+  ![Architecture Workflow](agents_flow)
 
 ### Knowledge Base and RAG
 
@@ -61,8 +61,8 @@ Using DeepEval metrics, the framework has achieved:
 - Perfect faithfulness at 1.000
 - High precision and recall in diagnostic outputs
 
-   ![Architecture Workflow](res1.png)
-  ![Architecture Workflow](res_2.png)
+   ![Architecture Workflow](res1)
+  ![Architecture Workflow](res_2)
 
 
 The sequential chat pattern demonstrated superior performance to group chat approaches, with significantly higher precision (0.90 vs 0.70) and recall (1.00 vs 0.78).
